@@ -33,8 +33,23 @@ const XXXX_DIGITS = X_DIGITS
     .flat();
 
 // WIP: Maybe not needed
-function getRangeCoverageInString(r = XX_DIGITS, s) {
-    r.map(x => s.indexOf(x) > -1);
+function getRangeCoverageInString(range, s) {
+    const isCovered = [];
+    const isNotCovered = [];
+    
+    for(let n of range) {
+        if(s.includes(n)) {
+            isCovered.push(n);
+        } else {
+            isNotCovered.push(n);
+        }
+    }
+    
+    return {
+        isCovered,
+        isNotCovered,
+        coverage: (100* isCovered.length / range.length).toFixed(1) + '%'
+    };
 }
 
 function generateFiller(l) {
@@ -67,4 +82,16 @@ function generateType1Chart(r, colSize) {
     return chart;
 }
 
-// console.log(generateType1Chart(XX_DIGITS,10).join('\n'));
+// Type 2 = pack the digits so that the total number of digits in the chart is minimized while coverage is maximized
+// Can generally only be grown from both ends of the string
+// Can pick a number of centroids / seeds to start independent growth from
+// Then concatenate the different islands together to form the entire chart
+// - Pad the ends with fillers
+// - An island can only grow to the size of colSize, otherwise digits for coverage are lost
+function generateType2Chart(r, colSize) {
+
+}
+
+const chart = generateType1Chart(XX_DIGITS,10).join('\n');
+const coverage = getRangeCoverageInString(XXX_DIGITS, chart);
+console.log(coverage);
