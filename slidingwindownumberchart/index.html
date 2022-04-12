@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Sliding Window Number Chart - EduTool</title>
+    <script>
+        const chartSettings = {
+            colSize: 8,
+            digits: 2,
+            fontSize: 1.75,
+        };
+    </script>
+    <script src="dat.gui.min.js"></script>
+    <script src="index.js"></script>
+    <script src="tabularize.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="chartContainer"></div>
+
+    <script>
+        const gui = new dat.GUI({ name: 'Sliding Window Number Chart' });
+
+
+        gui.add(chartSettings, 'colSize', 1, 25, 1)
+            .onFinishChange(updateChartDisplay);
+
+        gui.add(chartSettings, 'digits', 1, 4, 1)
+            .onFinishChange(updateChartDisplay);
+
+        gui.add(chartSettings, 'fontSize', 0.5, 5, 0.25)
+            .onFinishChange(updateChartFont);
+    </script>
+</body>
+
+</html>

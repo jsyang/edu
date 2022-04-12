@@ -1,0 +1,13 @@
+{
+  "name": "edu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "jsyang <jsyang.ca@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "genIndex": "node generateIndex.js"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.9"
+  }
+}
