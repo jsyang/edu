@@ -8,7 +8,7 @@ function getTableFromNumberChart(chartRows) {
 }
 
 const digitMap = [null, X_DIGITS, XX_DIGITS, XXX_DIGITS, XXXX_DIGITS];
-const digitLegend = '万千十一';
+const digitLegend = '万千百十一';
 
 function updateChartDisplay() {
     const chartRows = generateType1Chart(digitMap[chartSettings.digits], chartSettings.colSize);
