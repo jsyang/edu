@@ -1,0 +1,9 @@
+.dg.ac {
+    display: none;
+}
+
+#window {
+    position:relative !important;
+    top:0 !important;
+    left:0 !important;
+}
