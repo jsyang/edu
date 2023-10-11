@@ -1,0 +1,54 @@
+<html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+	* {
+		overflow: visible !important;
+		break-inside: avoid;
+	}
+
+	/* Need to use classes as table elements do not overflow by default  */
+	.td {
+		font-family: 'Varela Round', sans-serif;
+		width: 2em;
+		height: 2em;
+		display: inline-block;
+		line-height: 2em;
+		text-align: center;
+		font-size: 10em;
+		border-right: 1px solid black;
+	}
+
+	.td:last-child {
+		border-right: none;
+	}
+
+	.tr {
+		white-space: nowrap;
+		border-bottom: 1px solid black;
+	}
+
+	.tr:last-child {
+		border-bottom: none;
+	}
+
+	.td:nth-child(2n) {
+		background-color: #ddd;
+	}
+
+	.table {
+		display: grid;
+	}
+</style>
+
+<body>
+	<script src="numbergrid.js"></script>
+	<script>
+		document.body.appendChild(
+			NumberGrid({ width: 10, height: 10, start: 1 })
+		);
+	</script>
+</body>
+
+</html>
