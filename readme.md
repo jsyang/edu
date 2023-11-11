@@ -28,3 +28,9 @@ This tool allows you to generate a number grid for primary school numeracy (ex: 
 
 This tool generates an addition table that the student can use to look up the sum of two numbers, both within the range [0, 10]. Use it to teach "number facts" for memorization.
 Like the Numbergrid tool, you can use posterazor to print this chart.
+
+### Math quizzer
+
+This tool can be used to quiz students on number facts with sums from 2 to 20. Flip card to show answer, audio included. 
+
+TODO: track score locally so that numbers that are easy gradually appear less and less.
