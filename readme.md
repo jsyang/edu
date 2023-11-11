@@ -1,4 +1,6 @@
-# Educational software and tools for print
+# EDU
+
+Educational software and tools for print. Supplementary material for bilingual education in relation to the UK National Curriculum.
 
 ### Number window chart generator
 
