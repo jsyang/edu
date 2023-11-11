@@ -128,6 +128,8 @@ function loadAudio() {
 }
 
 function flipCard(shouldMute) {
+    if(GAME.hasCardFlipped) shouldMute = true;
+    
     GAME.hasCardFlipped ^= 1;
     $el.flipCard.classList.toggle('show-back', GAME.hasCardFlipped);
 

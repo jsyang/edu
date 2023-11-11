@@ -41,6 +41,7 @@
     background-color: #ccc;
     color: black;
     border-radius: 1em;
+    overflow: hidden;
 }
 
 /* Style the back side */
