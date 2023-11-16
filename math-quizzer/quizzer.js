@@ -28,6 +28,19 @@ function nextRound(callbacks = {}) {
 }
 
 
+function generateNormalValue(meanSpike = 12) {
+    // https://en.wikipedia.org/wiki/Irwin%E2%80%93Hall_distribution#Approximating_a_Normal_distribution
+    let valueCLT = 0;
+    for (let i = meanSpike; i > 0; i--) {
+        valueCLT += Math.random();
+    }
+
+    valueCLT /= meanSpike;
+
+    // Irwin-Hall value within (0,1), approx Norm(0,1)
+    return valueCLT;
+}
+
 function generateRandomAdditionExpression() {
     const numbers = [];
     for (let i = 0; i < 2; i++) {
@@ -74,8 +87,7 @@ function convertExpressionToAudio() {
         ...convertNumberToAudioZHHK(numbers[0]),
         'plus',
         ...convertNumberToAudioZHHK(numbers[1]),
-        'equals1',
-        'equals2'
+        'equals'
     ];
 }
 
@@ -96,7 +108,7 @@ function playSpeechPart(part) {
         charSpeech.play();
 
         charSpeech.ontimeupdate = () => {
-            if (charSpeech.currentTime > 0.25) resolve();
+            if (charSpeech.currentTime > 0.20) resolve();
         };
     });
 }
@@ -120,7 +132,7 @@ function playAudio(expressionSpeechParts) {
 
 function loadAudio() {
     return Promise.all(
-        '1,2,3,4,5,6,7,8,9,10,plus,equals1,equals2'.split(',')
+        '1,2,3,4,5,6,7,8,9,10,plus,equals'.split(',')
             .map(async a => {
                 AUDIO[a] = new Audio(`audio_zh_hk/${a}.mp3`);
             })
@@ -128,8 +140,8 @@ function loadAudio() {
 }
 
 function flipCard(shouldMute) {
-    if(GAME.hasCardFlipped) shouldMute = true;
-    
+    if (GAME.hasCardFlipped) shouldMute = true;
+
     GAME.hasCardFlipped ^= 1;
     $el.flipCard.classList.toggle('show-back', GAME.hasCardFlipped);
 
@@ -167,11 +179,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.body.append(
         createDisplay()
     );
-    document.body.innerHTML += `
-    <button class="cta" onclick="playAudio(convertExpressionToAudio())">Speak</button>
-    <button class="cta" onclick="flipCard()">Show answer</button>
-    <button class="cta" onclick="nextRound()">Next</button>
-    `;
+    document.body.innerHTML += `<div class='cta-container'>
+    <button class="cta speak" onclick="playAudio(convertExpressionToAudio())">講話<br>Speak</button>
+    <button class="cta answer" onclick="flipCard()">答案<br>See answer</button>
+    <button class="cta" onclick="nextRound()">下一個<br>Next</button>
+    </div>`;
     await loadAudio();
 
     $el.flipCard = document.querySelector('.flip-card');

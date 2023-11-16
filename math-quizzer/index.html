@@ -23,15 +23,32 @@
         margin-bottom: 6em;
     }
 
+    .cta-container {
+        white-space: nowrap;
+    }
+
     .cta {
         background-color: #2a3;
-        margin-top: 1em;
+        margin-top: .2em;
         font-family: 'Varela Round', sans-serif;
-        font-size: 2em;
+        font-size: 2.5rem;
         padding: 1em;
         display: block;
         width: 100%;
         border: 0;
+    }
+
+    .cta.speak {
+        background-color: orangered;
+    }
+    .cta.answer {
+        background-color: orange;
+    }
+    
+    .cta.speak,
+    .cta.answer {
+        width:50%;
+        display: inline-block;
     }
 </style>
 <script src="quizzer.js"></script>
