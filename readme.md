@@ -31,6 +31,4 @@ Like the Numbergrid tool, you can use posterazor to print this chart.
 
 ### Math quizzer
 
-This tool can be used to quiz students on number facts with sums from 2 to 20. Flip card to show answer, audio included. 
-
-TODO: track score locally so that numbers that are easy gradually appear less and less.
+This tool can be used to quiz students on number facts with sums from 2 to 20. Flip card to show answer, Cantonese audio included. Use in conjunction with the **Addition Table**.
