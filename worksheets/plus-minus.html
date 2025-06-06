@@ -1,0 +1,131 @@
+<html>
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+    * {
+        overflow: visible !important;
+        break-inside: avoid;
+    }
+
+    table {
+        display: inline-block;
+        border-spacing: 0;
+        margin: 2em;
+    }
+
+    tr {
+        white-space: nowrap;
+        position: relative;
+    }
+
+    tr:nth-child(1) td {
+        margin-bottom: .1em;
+    }
+
+    tr:nth-child(2)::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: black;
+    }
+
+    tr:nth-child(3) td {
+        margin-top: 11px;
+        margin-bottom: .5em;
+    }
+
+    td {
+        width: 1em;
+        height: 1em;
+        line-height: 1em;
+        font-family: 'Varela Round', sans-serif;
+        text-align: center;
+        font-size: 1.5em;
+        display: inline-block;
+    }
+</style>
+
+<body>
+    <table class="question">
+        <tr>
+            <td></td>
+            <td>5</td>
+            <td>5</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>&minus;</td>
+            <td>2</td>
+            <td>7</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+        </tr>
+    </table>
+
+</body>
+<script>
+    const getNumber = (maxDigits, maxValue = 0) => {
+        let n;
+
+        do {
+            n = Math.floor(Math.random() * Math.pow(10, maxDigits));
+            if (!maxValue) break;
+        } while (n > maxValue || n === 0);
+
+        return n;
+    };
+
+    function generateVerticalArithmeticHTML(type = 'plus', maxDigits = 3) {
+        let html = '<table><tr>';
+        let nTop, nBottom;
+        switch (type) {
+            case 'minus':
+                nTop = getNumber(maxDigits);
+                nBottom = getNumber(maxDigits, nTop);
+                break;
+            default:
+            case 'plus':
+                nTop = getNumber(maxDigits);
+                nBottom = getNumber(maxDigits);
+        }
+
+        nTop = nTop.toString().padStart(maxDigits, ' ');
+        nBottom = nBottom.toString().padStart(maxDigits, ' ');
+
+        // nTop
+        for (let i = 0; i <= maxDigits; i++) {
+            if (i === 0) {
+                html += `<td></td>`;
+            } else {
+                html += `<td>${nTop[i - 1] || ''}</td>`;
+            }
+        }
+        html += '</tr><tr>';
+
+        // nBottom
+        for (let i = 0; i <= maxDigits; i++) {
+            if (i === 0) {
+                html += `<td>&${type};</td>`;
+            } else {
+                html += `<td>${nBottom[i - 1] || ''}</td>`;
+            }
+        }
+        html += `</tr><tr><td colspan="${maxDigits + 1}"></td></tr></table>`;
+
+        return html;
+    }
+
+    let qHTML = '';
+    for (let i = 24; i-- > 0;) {
+        qHTML += generateVerticalArithmeticHTML(Math.random() > .5 ? 'plus' : 'minus');
+    }
+
+    document.body.innerHTML = qHTML;
+</script>
+
+
+</html>
