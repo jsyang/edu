@@ -1,0 +1,137 @@
+<html>
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+    * {
+        overflow: visible !important;
+        break-inside: avoid;
+    }
+
+    table {
+        border-spacing: 0;
+    }
+
+    .row0 {
+        background: #555;
+        color: white;
+    }
+
+    
+    .row0.col1,
+    .row0.col3,
+    .row0.col5,
+    .row0.col7,
+    .row0.col9,
+    .row0.col11 {
+        background: #888;
+    }
+
+    .row2.col0,
+    .row4.col0,
+    .row6.col0,
+    .row8.col0,
+    .row10.col0 {
+        background: #555;
+        color: white;
+    }
+
+    .row1.col0,
+    .row3.col0,
+    .row5.col0,
+    .row7.col0,
+    .row9.col0,
+    .row11.col0 {
+        background: #888;
+        color: white;
+        
+    }
+    
+    /* row highlighting */
+    .row1,
+    .row2,
+    .row4,
+    .row10,
+    .row6 {
+        background: #eee;
+    }
+
+    .row1.col1,
+    .row2.col2,
+    .row3.col3,
+    .row4.col4,
+    .row5.col5,
+    .row6.col6,
+    .row7.col7,
+    .row8.col8,
+    .row9.col9,
+    .row10.col10,
+    .row11.col11
+    {
+        background: #ccc;
+    }
+
+    tr {
+        white-space: nowrap;
+        border-bottom: 1px solid black;
+    }
+
+    tr:last-child {
+        border-bottom: none;
+    }
+
+    td {
+        width: 2em;
+        height: 2em;
+        line-height: 2em;
+        font-family: 'Varela Round', sans-serif;
+        text-align: center;
+        font-size: 10em;
+        display: inline-block;
+        border-right: 1px solid black;
+    }
+
+
+    td:last-child {
+        border-right: none;
+    }
+</style>
+
+<body></body>
+<script>
+    // From LLM
+    function createArray(size) {
+        const arr = [];
+        for (let i = 1; i < size; i++) {
+            const row = [];
+            for (let j = 1; j < size; j++) {
+                const res = i * j;
+                row.push(res);
+            }
+            arr.push(row);
+        }
+        return arr;
+    }
+
+    // From LLM
+    function createTableFromArray(arr) {
+        const table = document.createElement("table");
+        for (let i = 0; i < arr.length; i++) {
+            const row = document.createElement("tr");
+            for (let j = 0; j < arr[i].length; j++) {
+                const cell = document.createElement("td");
+                cell.textContent = arr[i][j];
+                cell.classList.add(`row${i}`);
+                cell.classList.add(`col${j}`);
+                row.appendChild(cell);
+            }
+            table.appendChild(row);
+        }
+        return table;
+    }
+
+    document.body.appendChild(
+        createTableFromArray(createArray(13))
+    );
+</script>
+
+
+</html>

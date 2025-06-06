@@ -24,10 +24,11 @@ This tool allows you to generate a number grid for primary school numeracy (ex: 
     - PDF file of all the image tiles is downloaded
     - Print out the PDF and physically crop and stitch the tiles together
 
-### Addition table
+### Addition / Multiplication chart
 
-This tool generates an addition table that the student can use to look up the sum of two numbers, both within the range [0, 10]. Use it to teach "number facts" for memorization.
-Like the Numbergrid tool, you can use posterazor to print this chart.
+Generate an addition / multiplication table that the student can use to look up the sum of two numbers, both within the range [0, 10]. Use it to teach "number facts" for memorization.
+
+Like the Numbergrid tool, you can use posterazor to print these charts.
 
 ### Math quizzer
 
